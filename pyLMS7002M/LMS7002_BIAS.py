@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 
 class LMS7002_BIAS(LMS7002_base):
     __slots__ = ['allowLDO']    # Used to generate error on typos
@@ -2479,7 +2479,7 @@ class LMS7002_BIAS(LMS7002_base):
         Set the value of ISINK_SPIBUFF<2:0>
         """
         if self.chip.chipID == self.chip.chipIDMR3:                
-            if value not in range(0,8):
+            if value not in list(range(0,8)):
                 raise ValueError("Value must be [0,1]")
             self._writeReg('CFG20', 'ISINK_SPIBUFF<2:0>', value)
         else:

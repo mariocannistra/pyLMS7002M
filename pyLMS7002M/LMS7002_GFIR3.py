@@ -7,8 +7,8 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
-from LMS7002_GFIR import *
+from .LMS7002_base import *
+from .LMS7002_GFIR import *
 
 class LMS7002_GFIR3(LMS7002_base):
     __slots__ = ['CMB0a', 'CMB0b', 'CMB0c','CMB1a','CMB1b','CMB1c', 'CMB2a', 'CMB2b', 'CMB2c', 'CMB3a', 'CMB3b', 'CMB3c', 'CMB4a', 'CMB4b', 'CMB4c', 'rxtx']    # Used to generate error on typos

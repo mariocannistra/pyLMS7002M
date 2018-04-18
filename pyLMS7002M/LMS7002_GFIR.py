@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 
 class LMS7002_GFIR(LMS7002_base):
     __slots__ = ['rxtx', 'nFIR', 'suffix']    # Used to generate error on typos
@@ -31,7 +31,7 @@ class LMS7002_GFIR(LMS7002_base):
         """
         Get the FIR coefficient
         """
-        if key not in range(0,8):
+        if key not in list(range(0,8)):
             raise ValueError("Index must be in [0..7]. Given "+str(key))
         return self._readReg(str(key), 'COEFF<15:0>')
    
@@ -41,7 +41,7 @@ class LMS7002_GFIR(LMS7002_base):
         """
         if not(0 <= val <= 65535):
             raise ValueError("Value must be in [0..65535]")
-        if key not in range(0,8):
+        if key not in list(range(0,8)):
             raise ValueError("Index must be in [0..7]")
         self._writeReg(str(key), 'COEFF<15:0>', val)
 

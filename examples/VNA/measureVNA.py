@@ -8,7 +8,7 @@ if len(sys.argv)!=2:
     print("Usage: python measureVNA.py measurementName")
     exit(1)
 
-startFreq = 2.30e9
+startFreq = 2.3e9
 endFreq = 2.6e9
 nPoints = 101
 measName = sys.argv[1]
@@ -85,7 +85,7 @@ def logTxt(text, end="\n"):
 def userConfirmation(msg):
     userReady = 'n'
     while userReady != 'y':
-        userReady = raw_input(msg + '. Type y to continue. ')    
+        userReady = input(msg + '. Type y to continue. ')    
 
 def syncPhase(lms7002):
     TRF = lms7002.TRF['A']

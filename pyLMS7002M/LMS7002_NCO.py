@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 
 class LMS7002_NCO(LMS7002_base):
     __slots__=['rxtx', 'fcwDict', 'phoDict']    # Used to generate error on typos
@@ -71,7 +71,7 @@ class LMS7002_NCO(LMS7002_base):
         """
         Set the mode of NCO
         """
-        if value not in range(0,2):
+        if value not in list(range(0,2)):
             raise ValueError("Mode must be [0,1]")
         self._writeReg('CFG', 'MODE', value)
 
@@ -143,7 +143,7 @@ class LMS7002_NCO(LMS7002_base):
         """
         Get the PHO of FCW, depending on selected mode
         """
-        if key not in range(0,16):
+        if key not in list(range(0,16)):
             raise ValueError("Index must be in [0,15]")
         if self.MODE==0:
             # FCW
@@ -161,7 +161,7 @@ class LMS7002_NCO(LMS7002_base):
         """
         Set the PHO of FCW, depending on selected mode
         """
-        if key not in range(0,16):
+        if key not in list(range(0,16)):
             raise ValueError("Index must be in [0,15]")
         if self.MODE==0:
             # FCW

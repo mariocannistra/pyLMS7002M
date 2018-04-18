@@ -1,4 +1,5 @@
-import weakref, new 
+import weakref
+import types
 
 class Proxy(object):
   '''
@@ -14,14 +15,14 @@ class Proxy(object):
   def __init__(self, cb):
     try:
       try:
-        self.inst = weakref.ref(cb.im_self)
+        self.inst = weakref.ref(cb.__self__)
       except TypeError:
         self.inst = None
-      self.func = cb.im_func
-      self.klass = cb.im_class
+      self.func = cb.__func__
+      self.klass = cb.__self__.__class__
     except AttributeError:
       self.inst = None
-      self.func = cb.im_func
+      self.func = cb.__func__
       self.klass = None
 
   def __call__(self, *args, **kwargs):
@@ -35,7 +36,10 @@ class Proxy(object):
       raise ReferenceError
     elif self.inst is not None:
       # build a new instance method with a strong reference to the instance
-      mtd = new.instancemethod(self.func, self.inst(), self.klass)
+      #
+      # ported to python 3:  https://mail.python.org/pipermail/python-list/2013-April/644719.html
+      #mtd = new.instancemethod(self.func, self.inst(), self.klass)
+      mtd = types.MethodType(self.func, self.inst())
     else:
       # not a bound method, just return the func
       mtd = self.func

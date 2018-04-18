@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 
 class LMS7002_AFE(LMS7002_base):
     __slots__ = []  # Used to generate error on typos

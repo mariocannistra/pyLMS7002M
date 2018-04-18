@@ -13,6 +13,13 @@ class containing instances of on-chip modules. The evaluation board class contai
 on-board chips, such as LMS7002, ADF4002, etc. Classes follow the hierarchy and logical
 organization from evaluation board down to on-chip register level.
 
+## Python 3 porting
+
+The core scripts have been ported to Python 3.x using the standard python tool 2to3.py
+Also the VNA examples have been patched and tested.
+This porting has been performed and tested on Windows 8.1, using Python 3.5.6 in Anaconda 3 environment.
+Current version of pySmithPlot (as of April 18, 2018) has been successfully used commenting out a couple of options (waiting for author to solve those small issues).
+
 ## Installation
 
 The pyLMS7002M package is installed in a usual way:

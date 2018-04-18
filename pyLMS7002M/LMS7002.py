@@ -7,36 +7,36 @@
 #* License:
 #**************************************************************
 
-from LMS7002_REGDESC import *
-from LMS7002_REGDESC_MR3 import *
-from LMS7002_regDataStructs import *
-from LMS7002_regDataStructs import *
+from .LMS7002_REGDESC import *
+from .LMS7002_REGDESC_MR3 import *
+from .LMS7002_regDataStructs import *
+from .LMS7002_regDataStructs import *
 
 # Import core chip modules
-from LMS7002_CHIP import *
-from LMS7002_LimeLight import *
-from LMS7002_IO import *
-from LMS7002_NCO import *
-from LMS7002_GFIR1 import *
-from LMS7002_GFIR2 import *
-from LMS7002_GFIR3 import *
-from LMS7002_TxTSP import *
-from LMS7002_RxTSP import *
-from LMS7002_RFE import *
-from LMS7002_RBB import *
-from LMS7002_TRF import *
-from LMS7002_TBB import *
-from LMS7002_AFE import *
-from LMS7002_BIAS import *
-from LMS7002_SX import *
-from LMS7002_CGEN import *
-from LMS7002_XBUF import *
-from LMS7002_CDS import *
-from LMS7002_mSPI import *
-from LMS7002_DCCAL import *
+from .LMS7002_CHIP import *
+from .LMS7002_LimeLight import *
+from .LMS7002_IO import *
+from .LMS7002_NCO import *
+from .LMS7002_GFIR1 import *
+from .LMS7002_GFIR2 import *
+from .LMS7002_GFIR3 import *
+from .LMS7002_TxTSP import *
+from .LMS7002_RxTSP import *
+from .LMS7002_RFE import *
+from .LMS7002_RBB import *
+from .LMS7002_TRF import *
+from .LMS7002_TBB import *
+from .LMS7002_AFE import *
+from .LMS7002_BIAS import *
+from .LMS7002_SX import *
+from .LMS7002_CGEN import *
+from .LMS7002_XBUF import *
+from .LMS7002_CDS import *
+from .LMS7002_mSPI import *
+from .LMS7002_DCCAL import *
 
 # Import support modules
-from LMS7002_calibration import *
+from .LMS7002_calibration import *
 
 class LMS7002(object):
     def __init__(self, SPIwriteFn=None, SPIreadFn=None, verbose=0, MCUProgram=None, fRef = 30.72e6):
@@ -302,7 +302,7 @@ class LMS7002(object):
 
     def log(self, msg, verboseLevel=0):
         if verboseLevel <= self.verbose:
-            print msg
+            print(msg)
 
     #
     # Auxiliary functions
@@ -462,7 +462,7 @@ class LMS7002(object):
         if MAC!=0:
             self.MAC = prevMAC
         self.SPIImmediate = immMode
-        return zip(regList, regVals)
+        return list(zip(regList, regVals))
 
     def writeRegisterBank(self, regBankName, MAC=0):
         """

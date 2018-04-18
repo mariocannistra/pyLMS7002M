@@ -8,11 +8,11 @@
 #**************************************************************
 
 from copy import copy
-from LMS7002 import *
-from ADF4002 import *
-from Si5351 import *
-from boardUSB import *
-from QSpark_FPGA import *
+from .LMS7002 import *
+from .ADF4002 import *
+from .Si5351 import *
+from .boardUSB import *
+from .QSpark_FPGA import *
 from timeit import default_timer as timer
 
 class QSpark(object):
@@ -100,7 +100,7 @@ class QSpark(object):
         return boardUSB.findLMS7002()
             
     def log(self, logMsg):
-        print logMsg
+        print(logMsg)
 
     def getCommandNumber(self, cmdName):
         if cmdName == "CMD_GET_INFO":

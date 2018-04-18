@@ -23,7 +23,7 @@ if len(sys.argv)==3:
 if plotFig:
     from matplotlib.pyplot import *
     import smithplot
-    from smithplot.smithaxes import update_scParams
+    #from smithplot.smithaxes import update_scParams
     import warnings
     warnings.filterwarnings("ignore", module="matplotlib")
 
@@ -155,8 +155,10 @@ if plotFig:
     show()
 
     figure(figsize=(24, 16))
-    subplot(1, 1, 1, projection='smith',grid_major_fancy=True,
-                       grid_minor_fancy=True, plot_hacklines=True)
+
+    #subplot(1, 1, 1, projection='smith',grid_major_fancy=True, grid_minor_fancy=True, plot_hacklines=True)
+    subplot(1, 1, 1, projection='smith',grid_major_fancy=True, grid_minor_fancy=True)
+
     ZDutPlot = filterData(freq, ZDut, fMin, fMax)
     plot(ZDutPlot, markevery=1, label="S11", color='b', linewidth=1.5, aa=True)
     if saveFig:

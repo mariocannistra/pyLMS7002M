@@ -7,8 +7,8 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
-from LMS7002_GFIR import *
+from .LMS7002_base import *
+from .LMS7002_GFIR import *
 
 class LMS7002_GFIR1(LMS7002_base):
     __slots__ = ['CMB0', 'CMB1', 'CMB2', 'CMB3', 'CMB4', 'rxtx']    # Used to generate error on typos
@@ -46,7 +46,7 @@ class LMS7002_GFIR1(LMS7002_base):
         """
         Get the FIR coefficient bank
         """
-        if key not in range(0,5):
+        if key not in list(range(0,5)):
             raise ValueError("Index must be in [0..4]")
         if key==0:
             return self.CMB0

@@ -85,7 +85,7 @@ def logTxt(text, end="\n"):
 def userConfirmation(msg):
     userReady = 'n'
     while userReady != 'y':
-        userReady = raw_input(msg + '. Type y to continue. ')    
+        userReady = input(msg + '. Type y to continue. ')    
 
 def syncPhase(lms7002):
     TRF = lms7002.TRF['A']

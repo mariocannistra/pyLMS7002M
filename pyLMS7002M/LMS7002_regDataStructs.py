@@ -212,7 +212,7 @@ class Register(object):
         return retVal
 
     def help(self):
-        print self.__REPR__()
+        print((self.__REPR__()))
 
     def __str__(self,maxFieldNameWidth=20):
         self.refresh()
@@ -716,7 +716,7 @@ class regDescParser(object):
                 # Signal error and exit
                 raise ValueError( "Unknown construct : " + line  )
                 return
-        except Exception,error:
+        except Exception as error:
             retVal="("+str(self.nLine) + ") ERROR: "+str(error)
             raise ValueError(retVal)
 
@@ -928,23 +928,23 @@ class RegisterDefinition(object):
         return self.comments
 
     def getRegisterByName(self, regName):
-        if self.regNameDict.has_key(regName):
+        if regName in self.regNameDict:
             return self.regNameDict[regName]
         else:
             raise ValueError("Register "+regName+" not found")
 
     def getRegisterByAddress(self, regAddr):
-        if self.regAddrDict.has_key(regAddr):
+        if regAddr in self.regAddrDict:
             return self.regAddrDict[regAddr]
         else:
 #msavic 160606		
 #            raise ValueError("Register on address "+str(regAddr)+" not found")
-			warnings.warn("Register on address "+str(regAddr)+" not found")
-			return -1
+            warnings.warn("Register on address "+str(regAddr)+" not found")
+            return -1
 
     def getRegistersByName(self, regList="ALL"):
         if regList=="ALL":
-            regs = copy(self.regNameDict.values())
+            regs = copy(list(self.regNameDict.values()))
         else:
             regs = []
             for regName in regList:
@@ -953,7 +953,7 @@ class RegisterDefinition(object):
 
     def getRegisterAddresesByName(self, regList="ALL"):
         if regList=="ALL":
-            regAddrs = copy(self.regAddrDict.keys())
+            regAddrs = copy(list(self.regAddrDict.keys()))
         else:
             regAddrs = []
             for regName in regList:
@@ -984,7 +984,7 @@ class RegisterDefinition(object):
         # Check if register bank names are unique
         allRegBanks = {}
         for bank in regBanks:
-            if allRegBanks.has_key(bank.name):
+            if bank.name in allRegBanks:
                 retVal = "ERROR: Bank name " + bank.name + " is not unique."
                 raise ValueError(retVal)
             allRegBanks.update({bank.name : None})
@@ -993,7 +993,7 @@ class RegisterDefinition(object):
         allRegs = {}
         for bank in regBanks:
             for reg in bank.getRegs():
-                if allRegs.has_key(reg.name):
+                if reg.name in allRegs:
                     retVal = "ERROR: Register name " + reg.name + " is not unique."
                     raise ValueError(retVal)
                 allRegs.update({reg.name : None})

@@ -7,13 +7,13 @@
 #* License:
 #**************************************************************
 
-from weakproxy import *
+from .weakproxy import *
 from copy import copy
-from LMS7002 import *
-from ADF4002 import *
-from Si5351 import *
-from boardUSB import *
-from LimeSDR_FPGA import *
+from .LMS7002 import *
+from .ADF4002 import *
+from .Si5351 import *
+from .boardUSB import *
+from .LimeSDR_FPGA import *
 from timeit import default_timer as timer
 import atexit
 
@@ -148,7 +148,7 @@ class LimeSDR(object):
             return cyLimeLib.getDeviceList()
             
     def log(self, logMsg):
-        print logMsg
+        print(logMsg)
 
     def getCommandNumber(self, cmdName):
         if cmdName == "CMD_GET_INFO":

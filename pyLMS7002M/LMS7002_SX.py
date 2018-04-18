@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 from time import sleep
 from math import floor
 class LMS7002_SX(LMS7002_base):

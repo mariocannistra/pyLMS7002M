@@ -7,7 +7,7 @@
 #* License:
 #**************************************************************
 
-from LMS7002_base import *
+from .LMS7002_base import *
 import time
 
 class LMS7002_mSPI(LMS7002_base):

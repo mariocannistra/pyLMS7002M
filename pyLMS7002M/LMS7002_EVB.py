@@ -10,9 +10,9 @@
 import serial
 import serial.tools.list_ports
 from copy import copy
-from LMS7002 import *
-from ADF4002 import *
-from Si5351 import *
+from .LMS7002 import *
+from .ADF4002 import *
+from .Si5351 import *
 
 class LMS7002_EVB(object):
 
@@ -83,7 +83,7 @@ class LMS7002_EVB(object):
         return res            
             
     def log(self, logMsg):
-        print logMsg
+        print(logMsg)
 
     def getCommandNumber(self, cmdName):
         if cmdName == "CMD_GET_INFO":
